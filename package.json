@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.config.js" 
+    "start": "webpack-dev-server --open --config webpack.dev.config.cjs --mode development" 
   },
   "dependencies": {
   },
