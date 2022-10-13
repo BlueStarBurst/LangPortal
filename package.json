@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.config.cjs --mode development" 
+    "start": "webpack-dev-server --open --config webpack.dev.config.cjs --mode development"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.9"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
