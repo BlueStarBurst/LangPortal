@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.config.cjs --mode development"
+    "start": "webpack-dev-server --open --config webpack.dev.config.cjs --mode development",
+    "docs": "webpack --config webpack.docs.cjs --watch --mode development"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
