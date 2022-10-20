@@ -1,8 +1,5 @@
-import React from "react";
 import { render } from "react-dom";
 import React, {useRef, useState} from "react";
-
-import First, {Second} from "./first.jsx";
 
 import Button from "@mui/material/Button";
 
