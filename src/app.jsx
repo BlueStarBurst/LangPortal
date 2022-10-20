@@ -1,5 +1,5 @@
 import { render } from "react-dom";
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 
 import Button from "@mui/material/Button";
 
@@ -15,10 +15,10 @@ import CustomOutput from "./customOutput.jsx";
 function Page(props) {
     <div className="body">
 
-            <h1>Lang Portal</h1>
-            <CustomInput />
-            <CustomOutput />
-        </div>
+        <h1>Lang Portal</h1>
+        <CustomInput />
+        <CustomOutput />
+    </div>
 }
 
 render(
