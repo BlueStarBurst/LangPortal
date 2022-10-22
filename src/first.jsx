@@ -4,7 +4,7 @@ import React, {useRef, useState} from "react";
 import Button from "@mui/material/Button";
 
 import TextField from '@mui/material/TextField';
-import httpGET from "./serverAPI.js";
+import httpGet from "./serverAPI.js";
 
 function Hello() {
 

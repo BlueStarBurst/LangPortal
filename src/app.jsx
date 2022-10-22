@@ -1,23 +1,37 @@
 import { render } from "react-dom";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import First, { Second } from "./first.jsx";
 
 import Button from "@mui/material/Button";
 
 import TextField from '@mui/material/TextField';
-import httpGET from "./serverAPI.js";
+import {httpGet, httpPost} from "./serverAPI.js";
 
-import './styles.css';
+import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
 
 function Page(props) {
-    return (<>
-        <CustomInput />
-        <CustomOutput />
-    </>
 
+    useEffect(() => {
+        sendData();
+    }, []);
+
+    function sendData() {
+        httpPost("http://localhost:3000/translate", { "text": "Hello" }, (data) => {
+            console.log(data);
+        })
+    }
+
+    return (
+        <>
+            <h1>LangPortal</h1>
+            <div className="page">
+                <CustomInput />
+                <CustomOutput />
+            </div>
+        </>
     )
 }
 

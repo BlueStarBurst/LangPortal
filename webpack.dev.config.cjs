@@ -18,7 +18,7 @@ function createCopy(pathW = '') {
                 },
                 {
                     test: /\.(scss|css)$/,
-                    use: ['style-loader', 'css-loader'],
+                    use: ['style-loader', 'css-loader', 'sass-loader'],
                 },
                 {
                     test: /\.(jpg|png|svg|ico|icns|glb)$/,
