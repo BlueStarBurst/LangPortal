@@ -6,7 +6,7 @@ import First, { Second } from "./first.jsx";
 import Button from "@mui/material/Button";
 
 import TextField from '@mui/material/TextField';
-import {httpGet, httpPost} from "./serverAPI.js";
+import { httpGet, httpPost } from "./serverAPI.js";
 
 import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
@@ -26,11 +26,18 @@ function Page(props) {
 
     return (
         <>
-            <h1>LangPortal</h1>
-            <div className="page">
-                <CustomInput />
-                <CustomOutput />
-            </div>
+            <>
+                <h1>LangPortal</h1>
+                <div className="page">
+                    <CustomInput />
+                    <CustomOutput />
+                </div>
+            </>
+            <div className="cube"></div>
+            <div className="cube"></div>
+            <div className="cube"></div>
+            <div className="cube"></div>
+            <div className="cube"></div>
         </>
     )
 }
