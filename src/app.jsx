@@ -32,6 +32,7 @@ function Page(props) {
                     <CustomInput />
                     <CustomOutput />
                 </div>
+                <Button variant="contained">Translate</Button>
             </>
             <div className="cube"></div>
             <div className="cube"></div>
