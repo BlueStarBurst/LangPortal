@@ -14,14 +14,35 @@ import CustomInput from "./customInput.jsx";
 
 function Page(props) {
 
-    useEffect(() => {
-        sendData();
-    }, []);
+    // useEffect(() => {
+    //     sendData();
+    // }, []);
 
-    function sendData() {
-        httpPost("http://localhost:3000/translate", { "text": "Hello" }, (data) => {
+    const [data, setData] = useState("")
+
+    function sendData(text) {
+        httpPost("http://localhost:3000/translate", { "text": text }, 
+        (data) => {
             console.log(data);
+            setData(data)
         })
+    }
+
+    const [text, setText] = useState(null)
+
+    function onTextBoxTyped(e) {
+        setText(e.target.value)
+    }
+
+    function checkForReturn(e) {
+        console.log(e.code)
+        if(e.code=="Enter") {
+            sendData(text)
+        }
+    }
+
+    function ButtonClicked() {
+        sendData(text)
     }
 
     return (
@@ -29,10 +50,11 @@ function Page(props) {
             <>
                 <h1>LangPortal</h1>
                 <div className="page">
-                    <CustomInput />
-                    <CustomOutput />
+                    <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
+                    <CustomOutput translated={data}/>
                 </div>
-                <Button variant="contained">Translate</Button>
+                <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
+                {/* <Button variant="contained">Translate</Button> */}
             </>
             <div className="cube"></div>
             <div className="cube"></div>
@@ -42,6 +64,9 @@ function Page(props) {
         </>
     )
 }
+
+
+
 
 render(
     <Page />,

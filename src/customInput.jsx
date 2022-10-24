@@ -9,36 +9,12 @@ export default function CustomInput(props) {
     //The text exactly as it appears in the text field
     const inputText = useRef(null)
 
-    //The text as it was the last time the button was pressed
-    const [text, setText] = useState(null)
-    function exportValue() {
-        inputText.current.innerHTML = text
-        //This is where I would call a function, with text as a prop
-        //instead of updating the inputText
-    }
-
-    function onTextBoxTyped(e) {
-        setText(e.target.value)
-    }
-
-    function checkForReturn(e) {
-        console.log(e.code)
-        if(e.code=="Enter") {
-            exportValue()
-        }
-    }
-
-    function ButtonClicked() {
-        exportValue()
-    }
-
     return (
         <div>
             <h1>Input</h1>
-            <TextField id="outlined-basic" label="Input Text..." variant="outlined" onChange={onTextBoxTyped} onKeyDown={checkForReturn}/>
-            <h5></h5>
-            <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
-            <h2 ref={inputText}></h2>
+            <TextField id="outlined-basic" label="Input Text..." variant="outlined" onChange={props.keyDown} onKeyDown={props.charTyped}/>
+            {/* <h5></h5>
+            <h2 ref={inputText}></h2> */}
         </div>
     )
 }
