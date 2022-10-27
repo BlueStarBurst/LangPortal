@@ -4,7 +4,10 @@ import IconButton from '@mui/material/IconButton';
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
-import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
+import Backdrop from '@mui/material/Backdrop';
+
 
 
 
@@ -17,9 +20,17 @@ export default function CustomOutput(props) {
         <CopyToClipboard text={props.translated}
             onCopy={() => setCopied(true)}
         >
-            <Button variant="contained" endIcon={<FontAwesomeIcon icon={faCopy}/>}>
-                Copy
-            </Button>
+            <Tooltip 
+                TransitionComponent={Fade}
+                TransitionProps={{ timeout: 600 }}
+                title ="Copy" 
+                placement="top-start" 
+                arrow
+            >
+                <IconButton>
+                    <FontAwesomeIcon icon={faCopy}/>
+                </IconButton>
+            </Tooltip>
         </CopyToClipboard>
     </div>
 
