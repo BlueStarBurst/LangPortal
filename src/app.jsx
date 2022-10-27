@@ -45,13 +45,20 @@ function Page(props) {
         sendData(text)
     }
 
+    const [value,setValue] = useState("")
+    const [copied,setCopied] = useState(false)
+
     return (
         <>
             <>
                 <h1>LangPortal</h1>
                 <div className="page">
                     <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
+                    
+                    
                     <CustomOutput translated={data}/>
+
+
                 </div>
                 <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
                 {/* <Button variant="contained">Translate</Button> */}
