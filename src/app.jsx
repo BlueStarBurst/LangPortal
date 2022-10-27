@@ -50,7 +50,7 @@ function Page(props) {
             <>
                 <h1>LangPortal</h1>
                 <div className="page">
-                    <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
+                    <CustomInput keyDown={onTextBoxTyped} charTyped={checkForReturn} />
                     <CustomOutput translated={data}/>
                 </div>
                 <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
