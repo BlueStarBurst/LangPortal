@@ -138,3 +138,8 @@ html {
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
   height: 100% !important;
 }
+
+.tex:hover {
+  // use cursor over input text
+  cursor: text;
+}
