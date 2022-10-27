@@ -53,12 +53,8 @@ function Page(props) {
             <>
                 <h1>LangPortal</h1>
                 <div className="page">
-                    <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
-                    
-                    
+                    <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />                    
                     <CustomOutput translated={data}/>
-
-
                 </div>
                 <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
                 {/* <Button variant="contained">Translate</Button> */}
