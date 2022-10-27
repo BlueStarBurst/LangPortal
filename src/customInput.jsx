@@ -10,9 +10,9 @@ export default function CustomInput(props) {
     const inputText = useRef(null)
 
     return (
-        <div>
+        <div className="textF l">
             <h1>Input</h1>
-            <TextField id="outlined-basic" label="Input Text..." variant="outlined" onChange={props.keyDown} onKeyDown={props.charTyped}/>
+            <TextField className="w-100 h-100" id="outlined-basic" label="Input Text..." variant="outlined" onChange={props.keyDown} onKeyDown={props.charTyped}/>
             {/* <h5></h5>
             <h2 ref={inputText}></h2> */}
         </div>
