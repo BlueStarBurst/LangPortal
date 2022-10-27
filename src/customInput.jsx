@@ -12,7 +12,7 @@ export default function CustomInput(props) {
     return (
         <div className="textF l">
             <h1>Input</h1>
-            <TextField className="w-100 h-100" id="outlined-basic" label="Input Text..." variant="outlined" onChange={props.keyDown} onKeyDown={props.charTyped}/>
+            <TextField multiline minRows={8} className="w-100 h-100" id="outlined-basic" label="Input Text..." variant="outlined" onChange={props.keyDown} onKeyDown={props.charTyped}/>
             {/* <h5></h5>
             <h2 ref={inputText}></h2> */}
         </div>
