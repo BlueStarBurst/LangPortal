@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import Button from '@mui/material/Button';
 
-  
+
 
 export default function CustomOutput(props) {
     return (<div className="textF r">
@@ -15,7 +17,9 @@ export default function CustomOutput(props) {
         <CopyToClipboard text={props.translated}
             onCopy={() => setCopied(true)}
         >
-            <FontAwesomeIcon icon={faCopy} />
+            <Button variant="contained" endIcon={<FontAwesomeIcon icon={faCopy}/>}>
+                Copy
+            </Button>
         </CopyToClipboard>
     </div>
     )
