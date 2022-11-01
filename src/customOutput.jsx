@@ -38,20 +38,21 @@ export default function CustomOutput(props) {
             
         >
             <Tooltip 
+                onClick={handleClick}
                 TransitionComponent={Fade}
                 TransitionProps={{ timeout: 600 }}
                 title ="Copy" 
                 placement="top-start" 
                 arrow
             >
-                <Button variant="contained" onClick={handleClick}>
+                <Button variant="contained">
                     <FontAwesomeIcon icon={faCopy}/>
                 </Button>
             </Tooltip>
         </CopyToClipboard>
         <Snackbar
-        autoHideDuration={4000}
         open={open}
+        autoHideDuration={4000}
         onClose={handleClose}
         >
             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
