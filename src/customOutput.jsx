@@ -6,7 +6,7 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import Snackbar from '@mui/material/Snackbar';
-import Button from "@mui/material/Button";
+import { IconButton } from "@mui/material";
 import MuiAlert from '@mui/material/Alert';
 
 
@@ -32,7 +32,7 @@ export default function CustomOutput(props) {
         <h1>Output</h1>
 
         <TextField multiline minRows={8} className="w-100 h-100 tex" id="outlined-basic" label="Output Text" variant="outlined" value={props.translated} disabled onChange={({ target: { value } }) => setValue(value)} />
-
+        <div className="copy2">
         <CopyToClipboard text={props.translated}
             onCopy={() => setCopied(true)}
             
@@ -45,12 +45,13 @@ export default function CustomOutput(props) {
                 placement="top-start" 
                 arrow
             >
-                <Button variant="contained">
+                <IconButton variant="contained" className="copy">
                     <FontAwesomeIcon icon={faCopy}/>
-                </Button>
+                </IconButton>
             </Tooltip>
         </CopyToClipboard>
         <Snackbar
+        message="Copied!"
         open={open}
         autoHideDuration={4000}
         onClose={handleClose}
@@ -59,7 +60,7 @@ export default function CustomOutput(props) {
                 Copied!
             </Alert>
         </Snackbar>
-        
+        </div>
     </div>
 
     )
