@@ -19,7 +19,7 @@ function Page(props) {
     //     sendData();
     // }, []);
 
-    const [data, setData] = useState("hola como estas");
+    const [data, setData] = useState("");
 
     function sendData(text) {
         httpPost("http://localhost:3000/translate", { "text": text },
