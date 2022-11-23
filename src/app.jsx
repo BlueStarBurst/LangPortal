@@ -12,20 +12,21 @@ import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
 
+
 function Page(props) {
 
     // useEffect(() => {
     //     sendData();
     // }, []);
 
-    const [data, setData] = useState("")
+    const [data, setData] = useState("hola como estas");
 
     function sendData(text) {
-        httpPost("http://localhost:3000/translate", { "text": text }, 
-        (data) => {
-            console.log(data);
-            setData(data)
-        })
+        httpPost("http://localhost:3000/translate", { "text": text },
+            (data) => {
+                console.log(data);
+                setData(data)
+            })
     }
 
     const [text, setText] = useState(null)
@@ -36,7 +37,7 @@ function Page(props) {
 
     function checkForReturn(e) {
         console.log(e.code)
-        if(e.code=="Enter") {
+        if (e.code == "Enter") {
             sendData(text)
         }
     }
@@ -45,19 +46,20 @@ function Page(props) {
         sendData(text)
     }
 
-    const [value,setValue] = useState("")
-    const [copied,setCopied] = useState(false)
+    const [value, setValue] = useState("")
+    const [copied, setCopied] = useState(false)
 
     return (
         <>
             <>
                 <h1>LangPortal</h1>
                 <div className="page">
-                    <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />                    
-                    <CustomOutput translated={data}/>
+                    <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
+                    <CustomOutput translated={data} />
                 </div>
                 <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
                 {/* <Button variant="contained">Translate</Button> */}
+                
             </>
             <div className="cube"></div>
             <div className="cube"></div>
