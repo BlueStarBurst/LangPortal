@@ -4,15 +4,18 @@ html {
 }
 
 .body {
-  // background-color: #f0f0f0;
-  overflow: hidden;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  color: #333;
-  margin: 0;
-  padding: 0;
+  z-index: 10;
   height: 100%;
+  width: 100%;
+  background-color: #eeeeee;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+
 
 #root {
   position: absolute;
@@ -30,6 +33,45 @@ html {
 .blue {
   background-color: rgb(255, 0, 195) !important;
   color: #fff;
+}
+
+.title {
+  text-align: center;
+  background-color: #f6f6f6;
+  text-align: center;
+  p.outset {border-style: outset;}
+	h1 {
+    margin-left: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    font-weight: 700;
+    font-family: "Josefin Sans", sans-serif;
+    background: linear-gradient(to right,#095fab 10%, #25abe8 50%, #24215f 60%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: rgb(255, 255, 255);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 5.5s linear infinite;
+    display: inline-block;
+    margin: 0%;
+	}
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  left: 0%;
+  top: 0%;
+  position: fixed;
+}
+
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
 }
 
 .page {
@@ -156,3 +198,26 @@ html {
   align-items: flex-end;
   justify-content: flex-end;
 }
+
+@keyframes spin
+{
+  0%
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
+}
+.logo{
+  animation: spin 2s infinite;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  text-align: center;
+  height: min-content;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
