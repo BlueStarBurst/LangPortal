@@ -26,7 +26,10 @@ function Page(props) {
         httpPost("https://dz17gr07l1.execute-api.us-east-2.amazonaws.com/dev/translate", text,
             (data) => {
                 console.log(data);
-                setData(data)
+                var thing = JSON.parse(data)
+                console.log(thing["data"][0]["translation_text"])
+                thing = JSON.parse(thing["data"][0]["translation_text"])
+                setData(thing)
             })
     }
 
@@ -34,7 +37,13 @@ function Page(props) {
 
     function onTextBoxTyped(e) {
         setText(e.target.value)
+        console.log(text)
     }
+
+    useEffect(() => {
+        console.log("text changed")
+        console.log(text)
+    }, [text])
 
     function checkForReturn(e) {
         console.log(e.code)
