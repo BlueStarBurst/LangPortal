@@ -22,7 +22,7 @@
       "function": {
         "langportal6594e59f": {
           "deploymentBucketName": "amplify-langportal-dev-205738-deployment",
-          "s3Key": "amplify-builds/langportal6594e59f-7256524563556a505843-build.zip"
+          "s3Key": "amplify-builds/langportal6594e59f-4449354a4347574c5070-build.zip"
         }
       },
       "api": {

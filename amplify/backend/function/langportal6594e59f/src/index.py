@@ -9,12 +9,13 @@ ENDPOINT_NAME = os.environ['ENDPOINT_NAME']
 runtime = boto3.client('runtime.sagemaker')
 
 
-def lambda_handler(event, context):
-    print("Received event: " + json.dumps(event, indent=2))
+def handler(event, context):
+    # print("Received event: " + json.dumps(event, indent=2))
 
     data = json.loads(json.dumps(event))
 
-    jsonFile = json.dumps(data)
+    jsonFile = json.dumps({"inputs": data["body"]})
+    print(jsonFile)
 
     response = runtime.invoke_endpoint(EndpointName=ENDPOINT_NAME,
                                        ContentType='application/json',
@@ -23,5 +24,13 @@ def lambda_handler(event, context):
     # print("success?")
     result = json.loads(response['Body'].read().decode())
     print(result)
-    return result[0]["translation_text"]
+    return {
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": json.dumps({
+            "data ": result
+        })
+    }
     # return predicted_label

@@ -19,7 +19,7 @@ export function httpPost(url, data, callback = console.log) {
     xhr.onreadystatechange = function() {
         // call the callback when the request is complete
         if (xhr.readyState == 4) {
-            callback(xhr.responseText);
+            callback(xhr);
         }
     }
     xhr.send(JSON.stringify(data));
