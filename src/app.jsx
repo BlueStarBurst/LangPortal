@@ -11,6 +11,7 @@ import { httpGet, httpPost } from "./serverAPI.js";
 import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
+import icon from "./image/Untitled (3).png"
 
 function Page(props) {
 
@@ -50,8 +51,13 @@ function Page(props) {
 
     return (
         <>
+        
+        <div className="body">
             <>
-                <h1>LangPortal</h1>
+                <div className="title">
+                    <img src={icon} className="logo"/>
+                    <h1>LangPortal</h1>
+                </div>
                 <div className="page">
                     <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />                    
                     <CustomOutput translated={data}/>
@@ -64,6 +70,7 @@ function Page(props) {
             <div className="cube"></div>
             <div className="cube"></div>
             <div className="cube"></div>
+            </div>
         </>
     )
 }
