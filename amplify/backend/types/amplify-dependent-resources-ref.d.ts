@@ -20,5 +20,20 @@ export type AmplifyDependentResourcesAttributes = {
             "language": "string",
             "voice": "string"
         }
+    },
+    "function": {
+        "langportal6594e59f": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
+    "api": {
+        "apif70e0ce1": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
     }
 }

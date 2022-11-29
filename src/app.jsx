@@ -23,7 +23,7 @@ function Page(props) {
     const [data, setData] = useState("");
 
     function sendData(text) {
-        httpPost("http://localhost:3000/translate", { "text": text },
+        httpPost("https://dz17gr07l1.execute-api.us-east-2.amazonaws.com/dev", { "inputs": text },
             (data) => {
                 console.log(data);
                 setData(data)
