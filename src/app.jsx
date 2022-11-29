@@ -28,7 +28,15 @@ function Page(props) {
                 console.log(data);
                 var thing = JSON.parse(data)
                 console.log(thing["data"][0]["translation_text"])
-                thing = JSON.parse(thing["data"][0]["translation_text"])
+                try {
+                    thing = JSON.parse(thing["data"][0]["translation_text"])
+                } catch (error) {
+                    console.log("Not JSON")
+                    thing = thing["data"][0]["translation_text"]
+                    thing = thing.replaceAll("« ", "")
+                    thing = thing.replaceAll(" »", "")
+                }
+                
                 setData(thing)
             })
     }
