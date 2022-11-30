@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import {SpeechToText} from "./speech.jsx";
 //When I press enter, I want the program to translate
 //I want a clear text button
 //Upload files feature?
