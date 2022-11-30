@@ -8,7 +8,7 @@ import Fade from '@mui/material/Fade';
 import Snackbar from '@mui/material/Snackbar';
 import { IconButton } from "@mui/material";
 import MuiAlert from '@mui/material/Alert';
-
+import {TextToSpeech} from "./speech.jsx";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -61,6 +61,7 @@ export default function CustomOutput(props) {
             </Alert>
         </Snackbar>
         </div>
+        <TextToSpeech text={props.translated} />
     </div>
 
     )
