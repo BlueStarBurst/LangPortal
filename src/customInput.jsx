@@ -10,6 +10,11 @@ export default function CustomInput(props) {
     //The text exactly as it appears in the text field
     const inputText = useRef(null)
 
+    function stt(text) {
+        inputText.current.value = text
+        inputText.current.focus()
+    }
+
     return (
         <div className="textF l">
             <h1 className="lang">English</h1>
