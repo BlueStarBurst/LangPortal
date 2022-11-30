@@ -1,6 +1,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 function createCopy(pathW = '') {
     return ({
@@ -33,8 +34,21 @@ function createCopy(pathW = '') {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: path.resolve(__dirname, './public/index.html'),
-            })
-        ]
+            }),
+            new webpack.ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'],
+            }),
+            new webpack.ProvidePlugin({
+                process: 'process/browser',
+            }),
+        ],
+        resolve: {
+            extensions: [ '.ts', '.js' ],
+            fallback: {
+                "stream": require.resolve("stream-browserify"),
+                "buffer": require.resolve("buffer")
+            }
+        }
     })
 }
 
