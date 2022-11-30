@@ -22,11 +22,22 @@ function Page(props) {
     const [data, setData] = useState("")
 
     function sendData(text) {
-        httpPost("http://localhost:3000/translate", { "text": text }, 
-        (data) => {
-            console.log(data);
-            setData(data)
-        })
+        httpPost("https://dz17gr07l1.execute-api.us-east-2.amazonaws.com/dev/translate", text,
+            (data) => {
+                console.log(data);
+                var thing = JSON.parse(data)
+                console.log(thing["data"][0]["translation_text"])
+                try {
+                    thing = JSON.parse(thing["data"][0]["translation_text"])
+                } catch (error) {
+                    console.log("Not JSON")
+                    thing = thing["data"][0]["translation_text"]
+                    thing = thing.replaceAll("« ", "")
+                    thing = thing.replaceAll(" »", "")
+                }
+                
+                setData(thing)
+            })
     }
 
     const [text, setText] = useState(null)
