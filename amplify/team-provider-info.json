@@ -18,6 +18,15 @@
       "predictions": {
         "langportals2t": {},
         "speechGenerator9e34938a": {}
+      },
+      "function": {
+        "langportal6594e59f": {
+          "deploymentBucketName": "amplify-langportal-dev-205738-deployment",
+          "s3Key": "amplify-builds/langportal6594e59f-434b6e6b357a51644d62-build.zip"
+        }
+      },
+      "api": {
+        "apif70e0ce1": {}
       }
     }
   }

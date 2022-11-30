@@ -11,6 +11,7 @@ import { httpGet, httpPost } from "./serverAPI.js";
 import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
+import icon from "./image/Untitled (3).png"
 
 
 function Page(props) {
@@ -22,10 +23,21 @@ function Page(props) {
     const [data, setData] = useState("");
 
     function sendData(text) {
-        httpPost("http://localhost:3000/translate", { "text": text },
+        httpPost("https://dz17gr07l1.execute-api.us-east-2.amazonaws.com/dev/translate", text,
             (data) => {
                 console.log(data);
-                setData(data)
+                var thing = JSON.parse(data)
+                console.log(thing["data"][0]["translation_text"])
+                try {
+                    thing = JSON.parse(thing["data"][0]["translation_text"])
+                } catch (error) {
+                    console.log("Not JSON")
+                    thing = thing["data"][0]["translation_text"]
+                    thing = thing.replaceAll("« ", "")
+                    thing = thing.replaceAll(" »", "")
+                }
+                
+                setData(thing)
             })
     }
 
@@ -33,7 +45,13 @@ function Page(props) {
 
     function onTextBoxTyped(e) {
         setText(e.target.value)
+        console.log(text)
     }
+
+    useEffect(() => {
+        console.log("text changed")
+        console.log(text)
+    }, [text])
 
     function checkForReturn(e) {
         console.log(e.code)
@@ -51,8 +69,13 @@ function Page(props) {
 
     return (
         <>
+        
+        <div className="body">
             <>
-                <h1>LangPortal</h1>
+                <div className="title">
+                    <img src={icon} className="logo"/>
+                    <h1>LangPortal</h1>
+                </div>
                 <div className="page">
                     <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
                     <CustomOutput translated={data} />
@@ -66,6 +89,7 @@ function Page(props) {
             <div className="cube"></div>
             <div className="cube"></div>
             <div className="cube"></div>
+            </div>
         </>
     )
 }
