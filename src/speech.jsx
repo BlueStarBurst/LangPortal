@@ -92,7 +92,7 @@ export function SpeechToText(props) {
     }
 
     function convertFromBuffer(bytes) {
-        props.setResponse('Converting text...');
+        // props.setResponse('Converting text...');
         console.log(bytes)
 
         Predictions.convert({
