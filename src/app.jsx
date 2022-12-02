@@ -123,7 +123,7 @@ function Page(props) {
                 <>
 
                     <div className="page">
-                        <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} setWord={setWord} />
+                        <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} setWord={setWord} text={text} />
                         <CustomOutput translated={data} setWord={setWord} setOldWord={setOldWord} />
                     </div>
 

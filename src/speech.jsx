@@ -151,6 +151,7 @@ export function TextToSpeech(props) {
     const [textToGenerateSpeech, setTextToGenerateSpeech] = useState("write to speech");
 
     function generateTextToSpeech() {
+        console.log(textToGenerateSpeech)
         setResponse('Generating audio...');
         Predictions.convert({
             textToSpeech: {
