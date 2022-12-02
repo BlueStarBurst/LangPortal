@@ -7,7 +7,7 @@ html {
   z-index: 10;
   height: 100%;
   width: 100%;
-  background-color: #495057;
+  background-color: #0C1117;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ html {
 
 .title {
   text-align: center;
-  background-color: #212529;
+  background-color: #161B22;
   text-align: center;
   p.outset {border-style: outset;}
 	h1 {
@@ -267,4 +267,20 @@ svg {
 
 .css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled {
   -webkit-text-fill-color: black !important;
+}
+
+.textField {
+  width: '90%';
+  margin-left: 'auto';
+  margin-right: 'auto';            
+  padding-bottom: 0;
+  margin-top: 0;
+  font-weight: 500;
+}
+textarea {
+  color: 'white' !important;
+};
+
+.css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input{
+  color: 'white' !important;
 }
