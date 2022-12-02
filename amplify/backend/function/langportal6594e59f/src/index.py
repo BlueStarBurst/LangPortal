@@ -17,9 +17,7 @@ def handler(event, context):
     jsonFile = json.dumps({"inputs": data["body"]})
     print(jsonFile)
 
-    response = runtime.invoke_endpoint(EndpointName=ENDPOINT_NAME,
-                                       ContentType='application/json',
-                                       Body=jsonFile)
+    response = runtime.invoke_endpoint(EndpointName=ENDPOINT_NAME,ContentType='application/json',Body=jsonFile)
     # print(response)
     # print("success?")
     result = json.loads(response['Body'].read().decode())
@@ -28,12 +26,10 @@ def handler(event, context):
         "statusCode": 200,
         "headers": {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Headers": "Content-Type",
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
         },
-        "body": json.dumps({
-            "data" : result
-        })
+        "body": json.dumps({"data": result})
     }
     # return predicted_label

@@ -13,6 +13,7 @@ import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
 import icon from "./image/Screen_Shot_2022-12-01_at_12.53.55_PM-removebg-preview.png"
 
+var timeout = ''
 function Page(props) {
 
     // useEffect(() => {
@@ -35,52 +36,81 @@ function Page(props) {
                     thing = thing.replaceAll("« ", "")
                     thing = thing.replaceAll(" »", "")
                 }
-                
+
                 setData(thing)
             })
     }
 
     const [text, setText] = useState(null)
+    const [counts, setCounts] = useState(0)
 
     function onTextBoxTyped(e) {
+        clearTimeout(timeout)
         setText(e.target.value)
+        var count = 0;
+        var words = e.target.value.split(" ")
+        for (var i = 0; i < words.length; i++) {
+            if (words[i].length > 0) {
+                count++;
+            }
+        }
+
+        if (counts != count) {
+            setCounts(count)
+        }
+
+        timeout = setTimeout(() => {
+            sendData(e.target.value)
+        }, 700)
+
     }
+
+    useEffect(() => {
+        if (text) {
+            clearTimeout(timeout)
+            sendData(text.substring(0, text.length - 1))
+        }
+    }, [counts])
 
     function checkForReturn(e) {
         console.log(e.code)
-        if(e.code=="Enter") {
+        if (e.code == "Enter") {
+            e.preventDefault();
+            e.stopPropagation();
+            clearTimeout(timeout)
             sendData(text)
         }
     }
 
     function ButtonClicked() {
+        clearTimeout(timeout)
         sendData(text)
     }
 
-    const [value,setValue] = useState("")
-    const [copied,setCopied] = useState(false)
+    const [value, setValue] = useState("")
+    const [copied, setCopied] = useState(false)
 
     return (
         <>
-        
-        <div className="body">
-            <>
-                <div className="title">
-                    <img src={icon} className="logo"/>
-                    <h1>LangPortal</h1>
-                </div>
-                <div className="page">
-                    <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />                    
-                    <CustomOutput translated={data}/>
-                </div>
-                <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
-                {/* <Button variant="contained">Translate</Button> */}
-            </>
-            <div className="cube"></div>
-            <div className="cube"></div>
-            <div className="cube"></div>
-            <div className="cube"></div>
-            <div className="cube"></div>
+
+            <div className="body">
+                <>
+                    <div className="title">
+                        <img src={icon} className="logo" />
+                        <h1>LangPortal</h1>
+                    </div>
+                    <div className="page">
+                        <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
+                        <CustomOutput translated={data} />
+                    </div>
+                    <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
+                    {/* <Button variant="contained">Translate</Button> */}
+                </>
+                <div className="cube"></div>
+                <div className="cube"></div>
+                <div className="cube"></div>
+                <div className="cube"></div>
+                <div className="cube"></div>
             </div>
         </>
     )

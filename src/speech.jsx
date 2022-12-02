@@ -7,6 +7,10 @@ Amplify.configure(awsconfig);
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
 import Button from '@mui/material/Button';
 import { useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAudioDescription, faFileAudio, faMicrophone, faVolumeHigh } from '@fortawesome/free-solid-svg-icons'
+import { IconButton, Tooltip } from '@mui/material';
+import Fade from '@mui/material/Fade';
 
 
 
@@ -82,17 +86,42 @@ export function SpeechToText(props) {
 
         return (
             <div className="audioRecorder">
-                <div>
-                    
+                {/* <div>
                     {recording && <Button variant="contained" color="error" onClick={stopRecording}>MIC</Button>}
                     {!recording && <Button color="error" onClick={startRecording}>MIC</Button>}
+                </div> */}
+                <div>
+                    {recording && <Tooltip
+                        onClick={stopRecording}
+                        TransitionComponent={Fade}
+                        TransitionProps={{ timeout: 600 }}
+                        title="Stop Recording"
+                        placement="top-start"
+                        arrow
+                    >
+                        <IconButton variant="outlined" className="copy recording">
+                            <FontAwesomeIcon icon={faMicrophone} />
+                        </IconButton>
+                    </Tooltip>}
+                    {!recording && <Tooltip
+                        onClick={startRecording}
+                        TransitionComponent={Fade}
+                        TransitionProps={{ timeout: 600 }}
+                        title="Record Audio"
+                        placement="top-start"
+                        arrow
+                    >
+                        <IconButton variant="contained" className="copy">
+                            <FontAwesomeIcon icon={faMicrophone} />
+                        </IconButton>
+                    </Tooltip>}
                 </div>
             </div>
         );
     }
 
     function convertFromBuffer(bytes) {
-        props.setResponse('Converting text...');
+        // props.setResponse('Converting text...');
         console.log(bytes)
 
         Predictions.convert({
@@ -160,7 +189,18 @@ export function TextToSpeech(props) {
         <div className="Text">
             <div>
                 {/* <input value={textToGenerateSpeech} onChange={setText}></input> */}
-                <Button color="error" onClick={generateTextToSpeech}>SPEECH</Button>
+                <Tooltip
+                    onClick={generateTextToSpeech}
+                    TransitionComponent={Fade}
+                    TransitionProps={{ timeout: 600 }}
+                    title="Play Audio"
+                    placement="top-start"
+                    arrow
+                >
+                    <IconButton variant="contained" className="copy">
+                        <FontAwesomeIcon icon={faVolumeHigh} />
+                    </IconButton>
+                </Tooltip>
             </div>
         </div>
     );
