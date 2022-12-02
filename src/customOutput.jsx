@@ -43,10 +43,30 @@ export default function CustomOutput(props) {
         return text;
     }
 
+    function clickArea(e) {
+        let i = e.target.selectionStart
+        console.log(e)
+        // console.log(getTheWord(i, props.translated))
+        props.setWord(getTheWord(i, props.translated))
+    }
+
+    const getTheWord = (selectionStart, value) => {
+        let arr = value.split(" ");
+        let sum = 0
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i].length + 1
+
+            if (sum > selectionStart) {
+                // console.log(arr[i])
+                return arr[i]
+            }
+        }
+    }
+
     return (<div className="textF r">
         <h1 className="span">Spanish</h1>
 
-        <TextField multiline minRows={8} className="w-100 h-100 tex" id="outlined-basic" label="Output Text" variant="outlined" value={props.translated} disabled onChange={({ target: { value } }) => setValue(value)} onMouseUp={getSelection} />
+        <TextField multiline minRows={8} className="w-100 h-100 tex" id="outlined-basic" label="Output Text" variant="outlined" value={props.translated} disabled onClick={clickArea} onChange={({ target: { value } }) => setValue(value)} onMouseUp={getSelection} />
         <div className="copy2">
             <TextToSpeech text={props.translated} />
 
