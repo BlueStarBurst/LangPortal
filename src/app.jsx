@@ -11,7 +11,7 @@ import { httpGet, httpPost } from "./serverAPI.js";
 import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
-import icon from "./image/Untitled (3).png"
+import icon from "./image/Screen_Shot_2022-12-01_at_12.53.55_PM-removebg-preview.png"
 
 var timeout = ''
 function Page(props) {
