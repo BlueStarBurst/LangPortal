@@ -295,15 +295,17 @@ svg {
   flex-direction: row;
   gap: 5px;
   margin-bottom: 5rem;
+  color: white;
 }
 
 .defH1 {
   margin-bottom: 0;
   text-align: center;
+  color: white;
 }
 
 .definition {
-  color: gray;
+  color: rgb(173, 173, 173);
 }
 
 .upIn {
@@ -329,4 +331,9 @@ svg {
 
 .definitions h3 {
   margin-bottom: 0;
+}
+
+
+textarea:disabled {
+  cursor: text;
 }
