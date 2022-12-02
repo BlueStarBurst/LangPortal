@@ -6,7 +6,7 @@ import First, { Second } from "./first.jsx";
 import Button from "@mui/material/Button";
 
 import TextField from '@mui/material/TextField';
-import { httpGet, httpPost } from "./serverAPI.js";
+import { httpGet, httpPost, defineSpanishWord } from "./serverAPI.js";
 
 import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
@@ -21,8 +21,14 @@ function Page(props) {
     // }, []);
 
     const [data, setData] = useState("")
+    const [word, setWord] = useState("")
+    const [def, setDef] = useState("")
+
+    const [oldWord, setOldWord] = useState("")
+    const [oldDef, setOldDef] = useState("")
 
     function sendData(text) {
+
         httpPost("https://dz17gr07l1.execute-api.us-east-2.amazonaws.com/dev/translate", text,
             (data) => {
                 // console.log(data);
@@ -66,14 +72,20 @@ function Page(props) {
     }
 
     useEffect(() => {
-        httpPost("https://dictionaryapi.com/api/v3/references/spanish/json/test?key=19095fed-248e-400d-816b-79843407fc92", "", (data) => {
-            console.log(data)
-        })
+
         if (text) {
             clearTimeout(timeout)
             sendData(text.substring(0, text.length - 1))
         }
     }, [counts])
+
+    useEffect(() => {
+        setOldDef(def)
+        setDef("")
+        if (word) {
+            defineSpanishWord(word, setDef)
+        }
+    }, [word])
 
     function checkForReturn(e) {
         // console.log(e.code)
@@ -103,10 +115,22 @@ function Page(props) {
                         <h1>LangPortal</h1>
                     </div>
                     <div className="page">
-                        <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} />
-                        <CustomOutput translated={data} />
+                        <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} setWord={setWord} />
+                        <CustomOutput translated={data} setWord={setWord} setOldWord={setOldWord} />
                     </div>
-                    <Button variant="contained" onClick={ButtonClicked} size="large">TRANSLATE</Button>
+
+                    <Button variant="contained" onClick={ButtonClicked} size="large" style={{ marginBottom: "2rem" }}>TRANSLATE</Button>
+
+                    <div className={(def != "") ? "upIn" : "downOut"}>
+                        <h1 className="defH1">Definition</h1>
+                        <div className="def">
+                            <h3><b>{(def != "") ? word + ": " : oldWord + ": "} </b></h3>
+                            <h3 className="definition">{(def != "") ? def : oldDef}</h3>
+                        </div>
+                    </div>
+
+
+
                     {/* <Button variant="contained">Translate</Button> */}
                 </>
                 <div className="cube"></div>

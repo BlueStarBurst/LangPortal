@@ -268,3 +268,47 @@ svg {
 .css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled {
   -webkit-text-fill-color: black !important;
 }
+
+.def {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.defH1 {
+  margin-bottom: 0;
+}
+
+.definition {
+  color: gray;
+}
+
+.upIn {
+  animation: upIn 0.5s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes upIn {
+  0% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.downOut {
+  animation: downOut 0.5s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes downOut {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
