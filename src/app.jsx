@@ -74,11 +74,15 @@ function Page(props) {
     function checkForReturn(e) {
         console.log(e.code)
         if (e.code == "Enter") {
+            e.preventDefault();
+            e.stopPropagation();
+            clearTimeout(timeout)
             sendData(text)
         }
     }
 
     function ButtonClicked() {
+        clearTimeout(timeout)
         sendData(text)
     }
 
