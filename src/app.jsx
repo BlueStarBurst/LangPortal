@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import First, { Second } from "./first.jsx";
 
 import Button from "@mui/material/Button";
+import Switch from '@mui/material/Switch';
 
 import TextField from '@mui/material/TextField';
 import { httpGet, httpPost } from "./serverAPI.js";
@@ -12,6 +13,8 @@ import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
 import icon from "./image/Screen_Shot_2022-12-01_at_12.53.55_PM-removebg-preview.png"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 
 var timeout = ''
 function Page(props) {
@@ -90,10 +93,16 @@ function Page(props) {
     const [value, setValue] = useState("")
     const [copied, setCopied] = useState(false)
 
+    const darkTheme = createTheme({
+        palette: {
+          mode: 'dark',
+        },
+    });
+
     return (
         <>
-
-            <div className="body">
+            <ThemeProvider theme={darkTheme}>
+            <div className="body" >
                 <>
                     <div className="title">
                         <img src={icon} className="logo" />
@@ -112,6 +121,7 @@ function Page(props) {
                 <div className="cube"></div>
                 <div className="cube"></div>
             </div>
+            </ThemeProvider>
         </>
     )
 }
