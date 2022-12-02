@@ -66,7 +66,7 @@ export default function CustomOutput(props) {
     return (<div className="textF r">
         <h1 className="span">Spanish</h1>
 
-        <TextField multiline minRows={8} className="w-100 h-100 tex" id="outlined-basic" label="Output Text" variant="outlined" value={props.translated} disabled onClick={clickArea} onChange={({ target: { value } }) => setValue(value)} onMouseUp={getSelection} />
+        <TextField multiline minRows={8} className="w-100 h-100 tex" id="outlined-basic" label="Output Text" variant="outlined" value={props.translated} disabled onClick={clickArea} onChange={({ target: { value } }) => setValue(value)}  />
         <div className="copy2">
             <TextToSpeech text={props.translated} />
 
