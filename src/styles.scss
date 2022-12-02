@@ -203,12 +203,22 @@ html {
   transform: translateY(-100%);
 }
 
+.recording {
+  color: white !important;
+  background-color: rgba(235, 55, 73, 0.81) !important;
+}
+
 .copy2 {
   width: 100%;
   display: flex;
   flex-direction:row;
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+svg {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
 }
 
 @keyframes spin

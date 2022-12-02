@@ -8,14 +8,14 @@ import Fade from '@mui/material/Fade';
 import Snackbar from '@mui/material/Snackbar';
 import { IconButton } from "@mui/material";
 import MuiAlert from '@mui/material/Alert';
-import {TextToSpeech} from "./speech.jsx";
+import { TextToSpeech } from "./speech.jsx";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export default function CustomOutput(props) {
-    const [copied,setCopied] = useState(false)
+    const [copied, setCopied] = useState(false)
     const [open, setOpen] = useState(false)
 
     const handleClose = (event, reason) => {
@@ -33,35 +33,37 @@ export default function CustomOutput(props) {
 
         <TextField multiline minRows={8} className="w-100 h-100 tex" id="outlined-basic" label="Output Text" variant="outlined" value={props.translated} disabled onChange={({ target: { value } }) => setValue(value)} />
         <div className="copy2">
-        <CopyToClipboard text={props.translated}
-            onCopy={() => setCopied(true)}
-            
-        >
-            <Tooltip 
-                onClick={handleClick}
-                TransitionComponent={Fade}
-                TransitionProps={{ timeout: 600 }}
-                title ="Copy" 
-                placement="top-start" 
-                arrow
+            <TextToSpeech text={props.translated} />
+
+            <CopyToClipboard text={props.translated}
+                onCopy={() => setCopied(true)}
+
             >
-                <IconButton variant="contained" className="copy">
-                    <FontAwesomeIcon icon={faCopy}/>
-                </IconButton>
-            </Tooltip>
-        </CopyToClipboard>
-        <Snackbar
-        message="Copied!"
-        open={open}
-        autoHideDuration={4000}
-        onClose={handleClose}
-        >
-            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                Copied!
-            </Alert>
-        </Snackbar>
+                <Tooltip
+                    onClick={handleClick}
+                    TransitionComponent={Fade}
+                    TransitionProps={{ timeout: 600 }}
+                    title="Copy"
+                    placement="top-start"
+                    arrow
+                >
+                    <IconButton variant="contained" className="copy">
+                        <FontAwesomeIcon icon={faCopy} />
+                    </IconButton>
+                </Tooltip>
+            </CopyToClipboard>
+            <Snackbar
+                message="Copied!"
+                open={open}
+                autoHideDuration={4000}
+                onClose={handleClose}
+            >
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Copied!
+                </Alert>
+            </Snackbar>
         </div>
-        <TextToSpeech text={props.translated} />
+
     </div>
 
     )
