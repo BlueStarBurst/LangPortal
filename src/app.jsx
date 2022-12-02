@@ -25,9 +25,9 @@ function Page(props) {
     function sendData(text) {
         httpPost("https://dz17gr07l1.execute-api.us-east-2.amazonaws.com/dev/translate", text,
             (data) => {
-                console.log(data);
+                // console.log(data);
                 var thing = JSON.parse(data)
-                console.log(thing["data"][0]["translation_text"])
+                // console.log(thing["data"][0]["translation_text"])
                 try {
                     thing = JSON.parse(thing["data"][0]["translation_text"])
                 } catch (error) {
@@ -66,6 +66,9 @@ function Page(props) {
     }
 
     useEffect(() => {
+        httpPost("https://dictionaryapi.com/api/v3/references/spanish/json/test?key=19095fed-248e-400d-816b-79843407fc92", "", (data) => {
+            console.log(data)
+        })
         if (text) {
             clearTimeout(timeout)
             sendData(text.substring(0, text.length - 1))
@@ -73,7 +76,7 @@ function Page(props) {
     }, [counts])
 
     function checkForReturn(e) {
-        console.log(e.code)
+        // console.log(e.code)
         if (e.code == "Enter") {
             e.preventDefault();
             e.stopPropagation();
