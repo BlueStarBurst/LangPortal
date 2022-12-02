@@ -25,8 +25,8 @@ export function httpPost(url, data, callback = console.log) {
     xhr.send(JSON.stringify(data));
 }
 
-export function defineSpanishWord(word, callback = console.log) {
-    if (word == "" || word == null || word == undefined || word == " ") {
+export function defineSpanishWord(word, callback = console.log, trys = 0) {
+    if (word == "" || word == null || word == undefined || word == " " || trys == 2) {
         return;
     }
     httpGet("https://dictionaryapi.com/api/v3/references/spanish/json/" + word + "?key=19095fed-248e-400d-816b-79843407fc92", (data) => {
@@ -37,19 +37,34 @@ export function defineSpanishWord(word, callback = console.log) {
 
             console.log(thing)
 
+            try {
 
-            var definition = thing[0].shortdef[0]
-            var count = 1
-            while (definition == undefined) {
-                definition = thing[count].shortdef[0]
-                count++
+                var arr = []
+                for (var i = 0; i < thing.length; i++) {
+                    var def = thing[i].shortdef[0];
+                    if (def != undefined) {
+                        arr.push(def);
+                    }
+                }
+
+                // var definition = thing[0].shortdef[0]
+                // var count = 1
+                // while (definition == undefined) {
+                //     definition = thing[count].shortdef[0]
+                //     count++
+                // }
+                // console.log("definition: " + definition)
+                console.log(arr);
+                callback(arr)
             }
-            console.log("definition: " + definition)
-            callback(definition)
+            catch (e) {
+                defineSpanishWord(thing[0], callback, trys + 1)
+                console.log(e)
+            }
         }
         catch (e) {
 
-            callback("")
+            callback([])
 
         }
 

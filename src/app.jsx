@@ -22,10 +22,10 @@ function Page(props) {
 
     const [data, setData] = useState("")
     const [word, setWord] = useState("")
-    const [def, setDef] = useState("")
+    const [def, setDef] = useState([])
 
     const [oldWord, setOldWord] = useState("")
-    const [oldDef, setOldDef] = useState("")
+    const [oldDef, setOldDef] = useState([])
 
     function sendData(text) {
 
@@ -81,7 +81,7 @@ function Page(props) {
 
     useEffect(() => {
         setOldDef(def)
-        setDef("")
+        setDef([])
         if (word) {
             defineSpanishWord(word, setDef)
         }
@@ -105,15 +105,23 @@ function Page(props) {
     const [value, setValue] = useState("")
     const [copied, setCopied] = useState(false)
 
+    useEffect(() => {
+        var newArr = [...new Set(def)];
+        if (def.length != newArr.length) {
+            setDef(newArr)
+        }
+    }, [def])
+
     return (
         <>
 
+            <div className="title">
+                <img src={icon} className="logo" />
+                <h1>LangPortal</h1>
+            </div>
             <div className="body">
                 <>
-                    <div className="title">
-                        <img src={icon} className="logo" />
-                        <h1>LangPortal</h1>
-                    </div>
+
                     <div className="page">
                         <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} setWord={setWord} />
                         <CustomOutput translated={data} setWord={setWord} setOldWord={setOldWord} />
@@ -122,10 +130,23 @@ function Page(props) {
                     <Button variant="contained" onClick={ButtonClicked} size="large" style={{ marginBottom: "2rem" }}>TRANSLATE</Button>
 
                     <div className={(def != "") ? "upIn" : "downOut"}>
-                        <h1 className="defH1">Definition</h1>
+                        <h1 className="defH1">Definitions</h1>
                         <div className="def">
-                            <h3><b>{(def != "") ? word + ": " : oldWord + ": "} </b></h3>
-                            <h3 className="definition">{(def != "") ? def : oldDef}</h3>
+                            <h3><b>{(def.length > 0) ? word + ": " : oldWord + ": "} </b></h3>
+
+                            <div className="definitions">
+                                {(def.length > 0) ?
+                                    def.map((element, i) => {
+                                        console.log(element);
+                                        return <h3 className="definition">{(i + 1) + ": " + element}</h3>
+                                    }) :
+                                    oldDef.forEach((element, i) => {
+                                        return <h3 className="definition">{(i + 1) + ": " + element}</h3>
+                                    })
+                                }
+                            </div>
+
+
                         </div>
                     </div>
 
