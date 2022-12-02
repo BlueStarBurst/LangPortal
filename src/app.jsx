@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import First, { Second } from "./first.jsx";
 
 import Button from "@mui/material/Button";
+import Switch from '@mui/material/Switch';
 
 import TextField from '@mui/material/TextField';
 import { httpGet, httpPost, defineSpanishWord } from "./serverAPI.js";
@@ -12,6 +13,13 @@ import './styles.scss';
 import CustomOutput from "./customOutput.jsx";
 import CustomInput from "./customInput.jsx";
 import icon from "./image/Screen_Shot_2022-12-01_at_12.53.55_PM-removebg-preview.png"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 var timeout = ''
 function Page(props) {
@@ -113,53 +121,55 @@ function Page(props) {
     }, [def])
 
     return (
+
         <>
+            <ThemeProvider theme={darkTheme}>
+                <div className="title">
+                    <img src={icon} className="logo" />
+                    <h1>LangPortal</h1>
+                </div>
+                <div className="body" >
+                    <>
 
-            <div className="title">
-                <img src={icon} className="logo" />
-                <h1>LangPortal</h1>
-            </div>
-            <div className="body">
-                <>
-
-                    <div className="page">
-                        <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} setWord={setWord} text={text} />
-                        <CustomOutput translated={data} setWord={setWord} setOldWord={setOldWord} />
-                    </div>
-
-                    <Button variant="contained" onClick={ButtonClicked} size="large" style={{ marginBottom: "2rem" }}>TRANSLATE</Button>
-
-                    <div className={(def != "") ? "upIn" : "downOut"}>
-                        <h1 className="defH1">Definitions</h1>
-                        <div className="def">
-                            <h3><b>{(def.length > 0) ? word + ": " : oldWord + ": "} </b></h3>
-
-                            <div className="definitions">
-                                {(def.length > 0) ?
-                                    def.map((element, i) => {
-                                        console.log(element);
-                                        return <h3 className="definition">{(i + 1) + ": " + element}</h3>
-                                    }) :
-                                    oldDef.forEach((element, i) => {
-                                        return <h3 className="definition">{(i + 1) + ": " + element}</h3>
-                                    })
-                                }
-                            </div>
-
-
+                        <div className="page">
+                            <CustomInput keyDown={checkForReturn} charTyped={onTextBoxTyped} setWord={setWord} text={text} />
+                            <CustomOutput translated={data} setWord={setWord} setOldWord={setOldWord} />
                         </div>
-                    </div>
+
+                        <Button variant="contained" onClick={ButtonClicked} size="large" style={{ marginBottom: "2rem" }}>TRANSLATE</Button>
+
+                        <div className={(def != "") ? "upIn" : "downOut"}>
+                            <h1 className="defH1">Definitions</h1>
+                            <div className="def">
+                                <h3><b>{(def.length > 0) ? word + ": " : oldWord + ": "} </b></h3>
+
+                                <div className="definitions">
+                                    {(def.length > 0) ?
+                                        def.map((element, i) => {
+                                            console.log(element);
+                                            return <h3 className="definition">{(i + 1) + ": " + element}</h3>
+                                        }) :
+                                        oldDef.forEach((element, i) => {
+                                            return <h3 className="definition">{(i + 1) + ": " + element}</h3>
+                                        })
+                                    }
+                                </div>
+
+
+                            </div>
+                        </div>
 
 
 
-                    {/* <Button variant="contained">Translate</Button> */}
-                </>
-                <div className="cube"></div>
-                <div className="cube"></div>
-                <div className="cube"></div>
-                <div className="cube"></div>
-                <div className="cube"></div>
-            </div>
+                        {/* <Button variant="contained">Translate</Button> */}
+                    </>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                    <div className="cube"></div>
+                </div>
+            </ThemeProvider>
         </>
     )
 }

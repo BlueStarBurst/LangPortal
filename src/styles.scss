@@ -8,7 +8,7 @@ html {
 body {
   margin: 0;
   padding-top: 65px;
-  background-color: #eeeeee;
+  background-color: #0C1117;
 }
 
 .body {
@@ -18,6 +18,7 @@ body {
   min-height: 100vh;
   width: 100%;
   // margin-top: 60px;
+  
   
   margin: 0;
   display: flex;
@@ -53,7 +54,7 @@ body {
 
 .title {
   text-align: center;
-  background-color: #f6f6f6;
+  background-color: #161B22;
   text-align: center;
   z-index: 100;
   p.outset {border-style: outset;}
@@ -63,7 +64,7 @@ body {
     font-size: 50px;
     font-weight: 700;
     font-family: "Josefin Sans", sans-serif;
-    background: linear-gradient(to right,#095fab 10%, #25abe8 50%, #24215f 60%);
+    background: linear-gradient(to right,#095fab 10%, #25abe8 50%, #89c4ff 60%);
     background-size: auto auto;
     background-clip: border-box;
     background-size: 200% auto;
@@ -79,8 +80,8 @@ body {
   width: 100vw;
   display: flex;
   flex-direction:row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content:flex-start;
   left: 0%;
   top: 0%;
   position: fixed;
