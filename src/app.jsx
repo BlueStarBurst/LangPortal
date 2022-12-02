@@ -67,6 +67,7 @@ function Page(props) {
 
     useEffect(() => {
         if (text) {
+            clearTimeout(timeout)
             sendData(text.substring(0, text.length - 1))
         }
     }, [counts])
