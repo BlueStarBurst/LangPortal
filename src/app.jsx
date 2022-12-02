@@ -22,6 +22,7 @@ const darkTheme = createTheme({
 });
 
 var timeout = ''
+var timeout2 = ''
 function Page(props) {
 
     // useEffect(() => {
@@ -91,7 +92,14 @@ function Page(props) {
         setOldDef(def)
         setDef([])
         if (word) {
-            defineSpanishWord(word, setDef)
+            if (def.length == 0) {
+                defineSpanishWord(word, setDef)
+            } else {
+                clearTimeout(timeout2)
+                timeout2 = setTimeout(() => {
+                    defineSpanishWord(word, setDef)
+                }, 700)
+            }
         }
     }, [word])
 
