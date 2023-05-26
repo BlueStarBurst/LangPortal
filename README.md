@@ -1,8 +1,8 @@
-# LANG PORTAL TRANSLATOR
-EASY TO USE TRANSLATOR FOR LEARNING
+# Lang PortalTranslator
+Easy to use translator for learning
 
-MENTOR: CHRIS SHEPPARD
-MENTEES: BRYANT HARGREAVES, DAVID HOMILLER, RAHUL KARTHIK, JOSHUA MATHEW, ZAIN NAVED, ATMIN SHETH
+Mentor: CHRIS SHEPPARD
+Mentees: Bryant Hargreaves, David Homiller, Rahul Karthik, Joshua Matthew, Zain Naved, Atmin Sheth
 
 # Problem:
 Communication is an important part of our society. Currently, there are over thousands of languages that prevent people from communicating with each other, however, there's two main solutions to this problem: we can either first use a translator to communicate with other languages or people can learn the language and just communicate that way. Lang Portal tries to combine these two solutions into one single service where users can translate and also learn the language at the same time!
