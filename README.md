@@ -1,4 +1,4 @@
-# Lang PortalTranslator
+# Lang Portal Translator
 Easy to use translator for learning
 
 Mentor: Christopher Sheppard
