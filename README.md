@@ -1,6 +1,3 @@
 # LangPortal
-AIM project, english to spanish 
-
-for aws sagemaker use langportaldemo file as it is up to date if u decide to research further
-
+English-to-Spanish NLP translator web app. React front end application using AWS Amplify for efficient deployment and scaling. Trained translation model on 2.2 million tokens using PyTorch and deployed on AWS SageMaker.
 
