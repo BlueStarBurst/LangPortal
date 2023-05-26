@@ -35,4 +35,6 @@ Hosted on AWS Amplify and on Github Pages
 We used a series of Amazon web services starting with Amplify where our website is hosted. We then use an HTTP Post method which will send our input to the Amazon API Gateway. This will handle our Post request data and route it to our Lambda function which is static python code that is hosted inside AWS. That code will call our model via the SageMaker endpoint and it will predict what our input will be in Spanish.
 
 https://bluestarburst.github.io/LangPortal/
-[![Watch the video]([https://img.youtube.com/vi/nTQUwghvy5Q/default.jpg](https://i.ytimg.com/vi/HAyAWdbnM7g/hqdefault.jpg?sqp=-oaymwE1CKgBEF5IVfKriqkDKAgBFQAAiEIYAXABwAEG8AEB-AH-CYAC0AWKAgwIABABGFogWihaMA8=\u0026rs=AOn4CLD8dz4WExEv5Czb2C-ZRJqnhVfvGg))](https://www.youtube.com/live/HAyAWdbnM7g?feature=share&t=10355)
+
+[![Watch the video](https://img.youtube.com/vi/HAyAWdbnM7g/maxresdefault.jpg)](https://www.youtube.com/live/HAyAWdbnM7g?feature=share&t=10355)
+
