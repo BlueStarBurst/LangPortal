@@ -27,9 +27,7 @@ KDE4 Dataset from HuggingFace
 This is our transformer model! We start with an input that goes into our transformer and inside of the Transformer we have an encoder and a decoder. The encoder will take in the inputs, tokenize them, and send them to the decoder which will then make predictions on what it thinks the phrase should be. 
 
 # Front-end:
-React.JS
-MUI
-Hosted on AWS Amplify and on Github Pages
+React.JS, MUI, Hosted on AWS Amplify and on Github Pages
 
 # Cloud Architecture:
 We used a series of Amazon web services starting with Amplify where our website is hosted. We then use an HTTP Post method which will send our input to the Amazon API Gateway. This will handle our Post request data and route it to our Lambda function which is static python code that is hosted inside AWS. That code will call our model via the SageMaker endpoint and it will predict what our input will be in Spanish.
