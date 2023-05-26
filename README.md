@@ -1,7 +1,7 @@
 # Lang PortalTranslator
 Easy to use translator for learning
 
-Mentor: Chris Sheppard
+Mentor: Christopher Sheppard
 
 Mentees: Bryant Hargreaves, David Homiller, Rahul Karthik, Joshua Matthew, Zain Naved, Atmin Sheth
 
