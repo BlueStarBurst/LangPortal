@@ -1,5 +1,6 @@
 # Lang Portal Translator
 Easy to use translator for learning
+![image](https://github.com/BlueStarBurst/LangPortal/assets/78242653/6447b447-1446-453b-9896-f753da7ccb14)
 
 Mentor: Christopher Sheppard
 
